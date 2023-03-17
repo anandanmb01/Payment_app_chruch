@@ -12,6 +12,8 @@ import Manage from "./scenes/manage/Manage";
 // import Test5 from "./scenes/Test5";
 // import Test6 from "./scenes/Test6";
 // import Test7 from "./scenes/Test7";
+global.serverurl='http://127.0.0.1:5000'
+
 
 function App() {
   const [theme,colorMode] = useMode();

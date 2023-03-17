@@ -25,6 +25,7 @@ const types = [
 
 function Manage() {
   const [type, setType] = useState(0);
+  const [name,setName] = useState("");
 
   return (
     <div>
@@ -44,7 +45,7 @@ function Manage() {
         <Grid item xs={4}></Grid>
 
         <Grid item xs={6}>
-          <TextField id="filled-basic" label="Name" variant="filled" />
+          <TextField id="filled-basic" label="Name" variant="filled" value={name} onChange={(e)=>{setName(e.target.value)}}/>
         </Grid>
 
         <Grid item xs={6}>
@@ -68,7 +69,7 @@ function Manage() {
         </Grid>
 
       </Grid>
-      <Form type={type} />
+      <Form type={type} name={name}/>
     </div>
   );
 }
