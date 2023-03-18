@@ -42,6 +42,7 @@ function Form(props) {
             })
             .then((d) => {
               console.log(d);
+              
             })
             .catch((e) => {
               console.log(e);
@@ -87,7 +88,8 @@ function Form(props) {
               remark: remark,
             })
             .then((d) => {
-              console.log(d);
+              // console.log(d);
+              window.location.reload(false)
             })
             .catch((e) => {
               console.log(e);
