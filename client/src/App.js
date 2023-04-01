@@ -7,12 +7,15 @@ import Sidebar  from "./scenes/global/Sidebar";
 import Payments from "./scenes/payments";
 import Form from "./scenes/Bill";
 import Manage from "./scenes/manage/Manage";
+import Transactions from "./scenes/Transactions/Transactions";
+import Report from "./scenes/Report/Report";
 // import Test3 from "./scenes/Test3";
 // import Test4 from "./scenes/Test4";
 // import Test5 from "./scenes/Test5";
 // import Test6 from "./scenes/Test6";
 // import Test7 from "./scenes/Test7";
 global.serverurl='http://127.0.0.1:5000'
+
 
 
 function App() {
@@ -30,11 +33,8 @@ function App() {
       <Route path="/payments" element = {<Payments/>} />
       {<Route path="/bills" element = {<Form/>} /> }
       {<Route path="/manage" element = {<Manage/>} /> }
-      {/* <Route path="/test3" element = {<test3/>} /> */}
-      {/* <Route path="/test4" element = {<test4/>} /> */}
-      {/* <Route path="/test5" element = {<test5/>} /> */}
-      {/* <Route path="/test6" element = {<test6/>} /> */}
-      {/* <Route path="/test7" element = {<test7/>} /> */}
+      {<Route path="/transactions" element = {<Transactions/>} />}
+      <Route path="/report" element = {<Report/>} />
       </Routes>
       </main>
     </div>

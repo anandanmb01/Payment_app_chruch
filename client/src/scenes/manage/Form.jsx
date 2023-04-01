@@ -42,7 +42,6 @@ function Form(props) {
             })
             .then((d) => {
               console.log(d);
-              
             })
             .catch((e) => {
               console.log(e);
@@ -67,8 +66,10 @@ function Form(props) {
             <Button
               variant="outlined"
               color="success"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 send();
+                window.location.reload(false);
               }}
             >
               create
@@ -89,7 +90,7 @@ function Form(props) {
             })
             .then((d) => {
               // console.log(d);
-              window.location.reload(false)
+              window.location.reload(false);
             })
             .catch((e) => {
               console.log(e);
@@ -122,8 +123,10 @@ function Form(props) {
             <Button
               variant="outlined"
               color="success"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 click();
+                window.location.reload(false);
               }}
             >
               create
@@ -133,11 +136,17 @@ function Form(props) {
       );
     case -1:
       function click_() {
-        axios.post(`${global.serverurl}/create/category/non_recrussive_join`, {
-          name: props.name,
-          category: rec_select,
-        }).then((d)=>{console.log(d);})
-        .catch((e)=>{console.log(e);})
+        axios
+          .post(`${global.serverurl}/create/category/non_recrussive_join`, {
+            name: props.name,
+            category: rec_select,
+          })
+          .then((d) => {
+            console.log(d);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       }
 
       return (
@@ -145,7 +154,8 @@ function Form(props) {
           <Grid item xs={6}>
             <Autocomplete
               disablePortal
-              id="recrussive category"rec_select
+              id="recrussive category"
+              rec_select
               options={catlist}
               sx={{ width: 300 }}
               renderInput={(params) => (
@@ -161,8 +171,10 @@ function Form(props) {
             <Button
               variant="outlined"
               color="success"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 click_();
+                window.location.reload(false);
               }}
             >
               create

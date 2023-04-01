@@ -1,75 +1,54 @@
 import React from "react";
 import Header from "../../components/Header";
-import { Button } from "@mui/material";
-import { TextField } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 import { Grid } from "@mui/material";
-import { MenuItem } from "@mui/material";
-import { useState } from "react";
-import Form from "./Form";
-
-const types = [
-  {
-    value: 1,
-    label: "Recrussive",
-  },
-  {
-    value: 0,
-    label: "Non recrussive main",
-  },
-  {
-    value: -1,
-    label: "Non recrussive join",
-  },
-];
+import Category from "./Category";
+import Member from "./Member";
+import CatList from "./CatList";
+import MemberList from "./MemberList";
 
 
 function Manage() {
-  const [type, setType] = useState(0);
-  const [name,setName] = useState("");
+  const [select, setSelect] = React.useState("category");
 
   return (
     <div>
-      <Header title="Manage" subtitle="Add Payment" />
-
+      <Header title="Manage" subtitle="Managment" />
       <Grid container spacing={2}>
-        <Grid item xs={4}>
-          <Button variant="outlined" color="success">
-            Category
-          </Button>
+        <Grid item xs={9}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Button
+                variant="outlined"
+                color="success"
+                onClick={() => {
+                  setSelect("category");
+                }}
+              >
+                Category
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                variant="outlined"
+                color="success"
+                onClick={() => {
+                  setSelect("member");
+                }}
+              >
+                Member
+              </Button>
+            </Grid>
+            {select === "category" ? <Category /> : <Member />}
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Button variant="outlined" color="success">
-            Member
-          </Button>
+        <Grid item xs={3}>
+          <Paper sx={{ m: 5, p: 2 }}>
+          {select === "category" ? <CatList /> : <MemberList />}
+            
+          </Paper>
         </Grid>
-        <Grid item xs={4}></Grid>
-
-        <Grid item xs={6}>
-          <TextField id="filled-basic" label="Name" variant="filled" value={name} onChange={(e)=>{setName(e.target.value)}}/>
-        </Grid>
-
-        <Grid item xs={6}>
-          <TextField
-            id="outlined-select-currency"
-            select
-            label="Select"
-            defaultValue={0}
-            helperText="Please select category type"
-            onChange={(e) => {
-              setType(e.target.value);
-              // console.log(e.target.value);
-            }}
-          >
-            {types.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-
       </Grid>
-      <Form type={type} name={name}/>
     </div>
   );
 }

@@ -129,13 +129,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+            {/* <Item
               title="Payments"
               to="/payments"
               icon={<PaymentOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
             <Item
               title="Bills"
               to="/bills"
@@ -172,10 +172,17 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+            {/* <Item
               title="Account"
               to="/account"
               icon={<AccountBoxOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            /> */}
+                        <Item
+              title="Report"
+              to="/report"
+              icon={<DynamicFormOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
