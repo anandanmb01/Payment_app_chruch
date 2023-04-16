@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
-    "build": "cd ../client && yarn run build && mv build ../server/assets",
+    "build": "cd ../client && npm run build && mv build ../server/assets",
     "export:exe": "pkg . --target node12-win-x64 --output server.exe"
   },
   "author": "",
