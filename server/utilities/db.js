@@ -58,6 +58,8 @@ try {
                 catidref INTEGER,
                 amount INTEGER,
                 date DATE,
+                billno INTEGER,
+                jf INTEGER,
                 enable INTEGER,
                 remarks TEXT,
                 FOREIGN KEY (persid)

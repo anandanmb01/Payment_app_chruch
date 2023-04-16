@@ -42,7 +42,7 @@ router.post("/payment", (req, res) => {
                 // console.log(row);
 
                 db.run(
-                  `INSERT INTO payments(persid,catid,catidref,amount,date,enable,remarks) VALUES(?,?,?,?,?,?,?)`,
+                  `INSERT INTO payments(persid,catid,catidref,amount,date,enable,remarks,billno,jf) VALUES(?,?,?,?,?,?,?,?,?)`,
                   [
                     response.id,
                     response.category,
@@ -51,6 +51,8 @@ router.post("/payment", (req, res) => {
                     response.date,
                     1,
                     "",
+                    response.billno,
+                    response.jf
                   ],
                   function (error) {
                     console.log(error);
@@ -60,7 +62,7 @@ router.post("/payment", (req, res) => {
             );
           } else {
             db.run(
-              `INSERT INTO payments(persid,catid,catidref,amount,date,enable,remarks) VALUES(?,?,?,?,?,?,?)`,
+              `INSERT INTO payments(persid,catid,catidref,amount,date,enable,remarks,billno,jf) VALUES(?,?,?,?,?,?,?,?,?)`,
               [
                 response.id,
                 response.category,
@@ -69,6 +71,8 @@ router.post("/payment", (req, res) => {
                 response.date,
                 1,
                 "",
+                response.billno,
+                response.jf
               ],
               function (error) {
                 console.log(error);

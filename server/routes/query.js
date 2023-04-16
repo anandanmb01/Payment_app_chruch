@@ -29,7 +29,7 @@ router.post("/getcategory", (req, res) => {
 });
 
 router.post("/getpayments", (req, res) => {
-  db.all(`SELECT m.name, m.family,c.name as category,p.date,p.amount from payments as p join members as m on p.persid = m.id join categories as c on c.id=p.catid`, (error, row) => {
+  db.all(`SELECT m.name, m.family,c.name as category,p.date,p.amount,p.billno,p.jf from payments as p join members as m on p.persid = m.id join categories as c on c.id=p.catid`, (error, row) => {
     if (error) {
       res.status(400);
     } else {
