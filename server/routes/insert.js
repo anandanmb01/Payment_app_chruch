@@ -65,7 +65,7 @@ router.post("/payment", (req, res) => {
                 response.id,
                 response.category,
                 response.category,
-                Number(response.amount),
+                amount,
                 response.date,
                 1,
                 "",
@@ -79,6 +79,7 @@ router.post("/payment", (req, res) => {
       }
     );
   });
+  res.send("ok");
 });
 
 module.exports = router;
