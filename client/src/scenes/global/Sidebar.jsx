@@ -143,7 +143,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            
+            <Item
+              title="Payments"
+              to="/payments"
+              icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -165,13 +171,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+            {/* <Item
               title="Transactions"
               to="/transactions"
               icon={<DynamicFormOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
             {/* <Item
               title="Account"
               to="/account"
@@ -179,7 +185,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             /> */}
-                        <Item
+            <Item
               title="Report"
               to="/report"
               icon={<DynamicFormOutlinedIcon />}

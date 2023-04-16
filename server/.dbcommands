@@ -1,0 +1,56 @@
+CREATE TABLE members (
+	id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL,
+	family TEXT NOT NULL,
+	phone TEXT,
+	regid TEXT,
+	remarks TEXT
+);
+
+CREATE TABLE categories (
+	id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL,
+	rec_type INTEGER NOT NULL,
+	enable INTEGER
+);
+
+CREATE TABLE recrussive_ref (
+	id INTEGER PRIMARY KEY,
+	catid INTEGER,
+	amount INTEGER,
+	duration_month INTEGER,
+	trigger_date INTEGER,
+	FOREIGN KEY (catid) REFERENCES categories (id)
+);
+
+CREATE TABLE non_recrussive_ref (
+	id INTEGER PRIMARY KEY,
+	sid INTEGER,
+	did INTEGER,
+	FOREIGN KEY (sid) REFERENCES categories (id),
+	FOREIGN KEY (did) REFERENCES categories (id)
+);
+
+CREATE TABLE payment_lookup (
+	id INTEGER PRIMARY KEY,
+	persid INTEGER,
+	catid INTEGER,
+	date DATE,
+	FOREIGN KEY (persid) REFERENCES members (id)
+);
+
+CREATE TABLE payments (
+	id INTEGER PRIMARY KEY,
+	persid INTEGER,
+	catid INTEGER,
+	catidref INTEGER,
+	amount INTEGER,
+	date DATE,
+	billno INTEGER,
+	jf INTEGER,
+	enable INTEGER,
+	remarks TEXT,
+	FOREIGN KEY (persid) REFERENCES members (id),
+	FOREIGN KEY (catid) REFERENCES categories (id),
+	FOREIGN KEY (catidref) REFERENCES categories (id)
+);

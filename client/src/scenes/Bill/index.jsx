@@ -72,6 +72,8 @@ export default function Form() {
     category: "",
     amount: "",
     trans_type: "",
+    billno: "",
+    jf: "",
   });
 
   const initialValues = {
@@ -82,6 +84,8 @@ export default function Form() {
     category: "",
     amount: "",
     trans_type: "",
+    billno: "",
+    jf: "",
   };
 
   const userSchema = yup.object().shape({
@@ -237,6 +241,32 @@ export default function Form() {
               <TextField
                 fullWidth
                 variant="filled"
+                type="number"
+                label="Bill Number"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.billno}
+                name="billno"
+                error={!!touched.billno && !!errors.billno}
+                helperText={touched.billno && errors.billno}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="number"
+                label="JF"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.jf}
+                name="jf"
+                error={!!touched.jf && !!errors.jf}
+                helperText={touched.jf && errors.jf}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
                 type="text"
                 label="Trans Type"
                 onBlur={handleBlur}
@@ -251,6 +281,8 @@ export default function Form() {
                 <MenuItem value="credit">Credit</MenuItem>
                 <MenuItem value="debit">Debit</MenuItem>
               </TextField>
+
+
             </Box>
             <Box display="flex" justifyContent="center" mt="20px">
               <Button
