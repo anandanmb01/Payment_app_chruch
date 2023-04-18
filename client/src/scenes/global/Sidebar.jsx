@@ -77,7 +77,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h4" color={colors.grey[100]}>
-                  DYNAMIC
+                  CHURCHLY
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -87,12 +87,12 @@ const Sidebar = () => {
           </MenuItem>
           {/*USER */}
           {!isCollapsed && (
-            <Box mb="25px">
+            <Box mb="15px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-user"
-                  width="50px"
-                  height="50px"
+                  width="130px"
+                  height="100px"
                   src={`../../assets/user.png`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
@@ -104,10 +104,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0 " }}
                 >
-                  DYNAMIC
+                  ParishPRO
                 </Typography>
                 <Typography variant="h6" color={colors.greenAccent[500]}>
-                  Dynamic Admin
+                  Parish Admin
                 </Typography>
               </Box>
             </Box>
@@ -139,6 +139,13 @@ const Sidebar = () => {
             <Item
               title="Bills"
               to="/bills"
+              icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+                        <Item
+              title="Npm Bills"
+              to="/npmbills"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

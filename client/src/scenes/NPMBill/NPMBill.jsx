@@ -6,23 +6,14 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import CircularProgress from "@mui/material/CircularProgress";
 import axios from "axios";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-
-export default function Form() {
+export default function NPMBill() {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const [inputValue, setInputValue] = useState("");
   const [catList, setCatList] = useState([]);
-  const [members, setmembers] = useState([]);
-
   React.useEffect(() => {
     axios
       .post(`${global.serverurl}/query/getmembers`)
       .then((d) => {
-        setmembers(d.data);
       })
       .catch((e) => {
         console.log(e);
@@ -40,41 +31,18 @@ export default function Form() {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
+    console.log(values);
     setTimeout(() => {
-      console.log(formData);
-      setFormData(values);
       resetForm();
     }, 1000);
-    try {
-      const data = {
-        ...values,
-        name: formData.name,
-        family: formData.family,
-      };
 
-      axios.post(`${global.serverurl}/insert/payment`, data).then((d) => {
-        console.log(d);
-      });
+    axios.post(`${global.serverurl}/insert/npmpayment`, values).then((d) => {
+      console.log(d);
+    });
 
-      // console.log(response);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  }
 
-  const [formData, setFormData] = useState({
-    id: "",
-    name: "",
-    family: "",
-    date: "",
-    category: "",
-    amount: "",
-    trans_type: "",
-    billno: "",
-    jf: "",
-  });
+
 
   const initialValues = {
     name: "",
@@ -91,7 +59,6 @@ export default function Form() {
   const userSchema = yup.object().shape({
     name: yup.string().notRequired(),
     family: yup.string().notRequired(),
-    id: yup.number().required("required").positive().integer(),
     // date: yup.date().required("required").max(new Date()),
     // category: yup.string().required("required"),
     // amount: yup.number().required("required").positive().integer(),
@@ -136,37 +103,11 @@ export default function Form() {
               <TextField
                 fullWidth
                 variant="filled"
-                type="number"
-                label="Id"
-                onBlur={handleBlur}
-                onChange={(e) => {
-                  handleChange(e);
-                  const id = e.target.value;
-                  const invoice = members.find(
-                    (invoice) => invoice.id.toString() === id.toString()
-                  );
-                  if (invoice) {
-                    setFormData({
-                      ...formData,
-                      name: invoice.name,
-                      family: invoice.family,
-                    });
-                  }
-                }}
-                value={values.id}
-                name="id"
-                error={!!touched.id && !!errors.id}
-                helperText={touched.id && errors.id}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
                 type="text"
                 label="Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={formData.name}
+                value={values.name}
                 name="name"
                 error={!!touched.name && !!errors.name}
                 helperText={touched.name && errors.name}
@@ -179,7 +120,7 @@ export default function Form() {
                 label="Address"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={formData.family}
+                value={values.family}
                 name="family"
                 error={!!touched.family && !!errors.family}
                 helperText={touched.family && errors.family}
@@ -300,4 +241,5 @@ export default function Form() {
       </Formik>
     </Box>
   );
+
 }

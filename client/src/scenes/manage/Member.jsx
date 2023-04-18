@@ -35,8 +35,8 @@ export default function Member() {
             fullWidth
             variant="filled"
             type="text"
-            label="name"
-            name="name"
+            label="family"
+            name="family"
             sx={{}}
           />
         </Grid>
@@ -45,8 +45,8 @@ export default function Member() {
             fullWidth
             variant="filled"
             type="text"
-            label="family"
-            name="family"
+            label="Name"
+            name="name"
             sx={{}}
           />
         </Grid>

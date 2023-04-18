@@ -1,5 +1,5 @@
 import React from "react";
-import Box from "@mui/material/Box";
+import { Box, Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -29,17 +29,26 @@ export default function MemberList() {
 
   function Loop() {
     return catList.map((cat) => {
-      return (<>
-        <ListItem disablePadding key={cat.id} sx={{p:1,px:3}}>
-          <ListItemIcon>
-            <PersonIcon/>
-          </ListItemIcon>
-          <ListItemText primary={cat.name} />
-        </ListItem>
-        <Divider/>
+      if (cat.npm !== 1){
+        return (<>
+          <ListItem disablePadding key={cat.id} sx={{ p: 0.5, px: 0, width: 'calc(100% )' }}>
+            <ListItemIcon>
+              <ListItemText primary={cat.id} sx={{ marginLeft: '10px' }} />
+            </ListItemIcon>
+            <Box>
+              <Typography sx={{ fontSize: 11 }}>{cat.family}&nbsp;: <br />{cat.name}</Typography>
+  
+            </Box>
+          </ListItem>
+          <Divider />
         </>
-      );
-    });
+        );
+      }else{
+        return null;
+      }
+
+    }
+    );
   }
 
 
@@ -47,12 +56,12 @@ export default function MemberList() {
     <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
       <nav aria-label="main mailbox folders">
         <List sx={{
-        overflow: 'auto',
-        maxHeight: '70vh',
-        width: "90%"
-      }}>
+          overflow: 'auto',
+          maxHeight: '70vh',
+          width: "90%"
+        }}>
 
-          <Loop/>
+          <Loop />
         </List>
       </nav>
     </Box>

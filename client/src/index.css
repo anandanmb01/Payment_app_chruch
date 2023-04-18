@@ -32,3 +32,22 @@ body,
 ::-webkit-scrollbar-track:hover{
   background: #1723ff;
 }
+
+.MuiDataGrid-main {
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+}
+.MuiDataGrid-columnHeader{
+  border: solid 1px black;
+}
+
+.MuiDataGrid-cell{
+  border: 1px solid rgb(0, 0, 0) !important;
+}
+
+.name-cell{
+  font-size: 10px;
+}
+
+.family-cell{
+  font-size: 10px;
+}

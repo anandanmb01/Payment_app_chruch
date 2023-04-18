@@ -17,7 +17,14 @@ const Payments = () => {
             .then((res) => {
                 let out = [];
                 res.data.map((d, i) => {
-                    out.push({ ...d, id: i + 1 });
+                    let credit = d.amount > 0 ? d.amount : null
+                    let debit = d.amount < 0 ? -1 * d.amount : null
+                    out.push({
+                        ...d,
+                        credit: credit,
+                        debit: debit,
+                        id: i + 1
+                    });
                 })
                 setTransactions(out);
             })
@@ -30,46 +37,57 @@ const Payments = () => {
 
     console.log(transactions);
     const columns = [
-        { field: "id", headerName: "ID" },
         { field: "date", headerName: "Date" },
         {
-            field: "jd", headerName: "JF",
-            flex: 1,
-            cellClassName: "name-column-cell",
+            field: "jf", headerName: "JF", width: 50, headerAlign: "center",
+            align: "center",
         },
         {
-            field: "billno", headerName: "Bill Number",
+            field: "billno", headerName: "Bill No",
             type: "number",
-            flex: 1,
+            flex: 0.2,
             headerAlign: "left",
             align: "left",
+            border: '1px solid black',
         },
         {
             field: "category", headerName: "Category",
-            type: "number",
+            type: "text",
             headerAlign: "left",
             align: "left",
+            flex: 0.7,
+        },
+        { field: "id", headerName: "ID", width: 50 },
+        {
+            field: "family", headerName: "Family",
+            type: "text",
+            headerAlign: "left",
+            align: "left",
+            flex: 0.7,
+            cellClassName: 'family-cell',
+
         },
         {
             field: "name", headerName: "Name",
-            type: "number",
             headerAlign: "left",
             align: "left",
-            flex: 1,
+            flex: 0.7,
+            cellClassName: 'name-cell',
         },
         {
-            field: "family", headerName: "Family",
+            field: "credit", headerName: "Credit",
             headerAlign: "left",
             align: "left",
-            flex: 1,
+            flex: 0.2,
         },
         {
-            field: "amount", headerName: "Amount",
+            field: "debit", headerName: "Debit",
             headerAlign: "left",
             align: "left",
-            flex: 1,
+            flex: 0.2,
         }
     ];
+
 
     return (
         <Box m="20px">

@@ -17,7 +17,8 @@ try {
                 family TEXT NOT NULL,
                 phone TEXT,
                 regid TEXT,
-                remarks TEXT 
+                remarks TEXT ,
+                npm INTEGER
             )`)
             db.run(`CREATE TABLE categories (
                 id INTEGER PRIMARY KEY,

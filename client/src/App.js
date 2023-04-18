@@ -9,6 +9,7 @@ import Form from "./scenes/Bill";
 import Manage from "./scenes/manage/Manage";
 import Transactions from "./scenes/Transactions/Transactions";
 import Report from "./scenes/Report/Report";
+import NPMBill from "./scenes/NPMBill/NPMBill";
 // import Test3 from "./scenes/Test3";
 // import Test4 from "./scenes/Test4";
 // import Test5 from "./scenes/Test5";
@@ -33,6 +34,7 @@ function App() {
               {<Route path="/manage" element={<Manage />} />}
               {<Route path="/transactions" element={<Transactions />} />}
               <Route path="/report" element={<Report />} />
+              <Route path="/npmbills" element={<NPMBill />} />
             </Routes>
           </main>
         </div>
