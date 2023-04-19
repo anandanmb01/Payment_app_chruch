@@ -104,7 +104,7 @@ router.post("/npmpayment", (req, res) => {
           if (row.rec_type == -1) {
             db.get(
               `SELECT * FROM non_recrussive_ref WHERE sid is "${response.category}"`,
-              (error, row) => {
+              (error, row_) => {
                 db.run(
                   `INSERT INTO members(name,family,remarks,npm) VALUES(?,?,?,?)`,
                   [response.name, response.family, "NPM", 1],
@@ -125,7 +125,7 @@ router.post("/npmpayment", (req, res) => {
                               [
                                 row.id,
                                 response.category,
-                                row.did,
+                                row_.did,
                                 amount,
                                 response.date,
                                 1,
@@ -166,7 +166,7 @@ router.post("/npmpayment", (req, res) => {
                           [
                             row.id,
                             response.category,
-                            row.did,
+                            response.category,
                             amount,
                             response.date,
                             1,

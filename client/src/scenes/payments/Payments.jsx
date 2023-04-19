@@ -56,8 +56,9 @@ const Payments = () => {
             headerAlign: "left",
             align: "left",
             flex: 0.7,
+            cellClassName: 'category-cell',
         },
-        { field: "id", headerName: "ID", width: 50 },
+        { field: "persid", headerName: "ID", width: 50 },
         {
             field: "family", headerName: "Family",
             type: "text",
@@ -71,7 +72,7 @@ const Payments = () => {
             field: "name", headerName: "Name",
             headerAlign: "left",
             align: "left",
-            flex: 0.7,
+            flex: 0.6,
             cellClassName: 'name-cell',
         },
         {
@@ -91,7 +92,7 @@ const Payments = () => {
 
     return (
         <Box m="20px">
-            <Header title="TEAM" subtitle="List of the members" />
+            <Header title="TRANSACTIONS" subtitle="List of the transactions" />
             <Box m="40px 0 0 0"
                 height="75vh"
                 sx={{

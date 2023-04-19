@@ -1,5 +1,5 @@
 import React from "react";
-import Box from "@mui/material/Box";
+import {Box,Typography} from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -29,11 +29,13 @@ export default function CatList() {
   function Loop() {
     return catList.map((cat) => {
       return (<>
-        <ListItem disablePadding key={cat.id} sx={{p:1,px:3}}>
+        <ListItem disablePadding key={cat.id} sx={{p:0.5,px:1}}>
           <ListItemIcon>
             {cat.rec_type === 0 ? <RestartAltIcon/> : cat.rec_type === 1 ? <TaskAltIcon/> :<CallMergeIcon/>}
           </ListItemIcon>
-          <ListItemText primary={cat.name} />
+          <Box>
+          <Typography sx={{ fontSize: 11 }}>{cat.name}</Typography>
+          </Box>
         </ListItem>
         <Divider/>
         </>
